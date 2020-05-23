@@ -7,9 +7,9 @@ object BookObject {
         var discount = 40
         var cost : Double = 0
         if(copies <= 50){
-            cost = (bookCover*copies + copies*3)*(100-discount)/100;
+            cost = ((bookCover*copies)*(100-discount)/100 + copies*3);
         }else{
-            cost = (bookCover*copies + 50*3 + (copies-50)*0.75)*(100-discount)/100;
+            cost = ((bookCover*copies)*(100-discount)/100 + 50*3 + (copies-50)*0.75);
         }
         println("Total wholesale cost for " + copies + " copies : Rs." + cost)
     }  
