@@ -1,17 +1,18 @@
-object theatorObject{
-
-    def main(args: Array[String]){
-        println("The best ticket Price is Rs." + find_bestTicketPrice())
+object theatorObject extends App{    
+    var i : Int = 5;
+    var max : Int = find_Profit(i)
+    var best_price = i
+    while (i < 45){
+        println("Rs." + i + " : Rs." + find_Profit(i))
+        if(max < find_Profit(i)){
+            max = find_Profit(i)
+            best_price = i
+        }
+        i = i+5
     }
-
-    def find_bestTicketPrice() : Int = find_Max(find_Profit(15, 120), find_Profit(10, 140), find_Profit(20, 100))
-
-    def find_Profit(ticket_Price : Int, people : Int) : Int = (ticket_Price*people) - (500 + 3*people)
-
-    def find_Max(profit_15 : Int, profit_10 : Int, profit_20 : Int) : Int = {
-        if(profit_15 > profit_10)
-            if(profit_15 > profit_20) 15 else 20
-        else
-            if(profit_10 > profit_20) 10 else 20
-    }
+    println("The best ticket Price is Rs." + best_price)
+    def find_Profit(ticket_Price : Int) : Int = find_revenue(ticket_Price) - find_cost(ticket_Price)
+    def find_revenue(ticket_Price : Int) : Int = find_attendee(ticket_Price)*ticket_Price
+    def find_cost(ticket_Price : Int) : Int = 500 + find_attendee(ticket_Price)*3
+    def find_attendee(ticket_Price : Int) : Int = 120 + ((15-ticket_Price)/5)*20
 }
